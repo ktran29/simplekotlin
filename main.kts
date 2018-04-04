@@ -38,6 +38,61 @@ class Person(val firstName: String, val lastName: String, var age: Int) {
     get() = "[Person firstName:$firstName lastName:$lastName age:$age]"
 }
 
+class Money(var amount: Int, var currency: String) {
+
+    fun convert(to: String): Money {
+
+        var convertedAmount: Int;
+
+        if (currency == to) {
+            return this;
+        }
+
+        when (currency) {
+            "GBP" ->
+                when (to) {
+                    "EUR" -> convertedAmount = this.amount * 3
+                    "CAN" -> convertedAmount = ((this.amount).toDouble() * 0.4).toInt()
+                    else -> { convertedAmount = this.amount * 2 }
+                }
+
+            "EUR" ->
+                when (to) {
+                    "GBP" -> convertedAmount = this.amount / 3
+                    "CAN" -> convertedAmount = ((this.amount).toDouble() / 1.2).toInt()
+                    else -> { convertedAmount = ((this.amount).toDouble() / 1.5).toInt() }
+                }
+
+            "CAN" ->
+                when (to) {
+                    "GBP" -> convertedAmount = ((this.amount).toDouble() * 0.4).toInt()
+                    "EUR" -> convertedAmount = ((this.amount).toDouble() * 1.2).toInt()
+                    else -> { convertedAmount = ((this.amount).toDouble() / 1.25).toInt() }
+                }
+            else -> {
+                when (to) {
+                    "GBP" -> convertedAmount = this.amount / 2
+                    "EUR" -> convertedAmount = ((this.amount).toDouble() * 1.5).toInt()
+                    else -> { convertedAmount = ((this.amount).toDouble() * 1.25).toInt() }
+                }
+            }
+        }
+        return Money(convertedAmount, to);
+
+    }
+
+    operator fun plus(b: Money): Money {
+
+        if (currency == b.currency) {
+            return Money(amount + b.amount, currency);
+        }
+
+        var convertedMoney = b.convert(currency);
+        return Money(amount + convertedMoney.amount, currency);
+    }
+
+}
+
 // write a "whenFn" that takes an arg of type "Any" and returns a String
 
 // write an "add" function that takes two Ints, returns an Int, and adds the values
@@ -105,7 +160,7 @@ p1.age = 48
 print(if (p1.debugString == "[Person firstName:Ted lastName:Neward age:48]") "." else "!")
 println("")
 
-/* print("Money tests: ")
+print("Money tests: ")
 val tenUSD = Money(10, "USD")
 val twelveUSD = Money(12, "USD")
 val fiveGBP = Money(5, "GBP")
@@ -131,4 +186,4 @@ for ( (pair, result) in moneyadd_tests) {
     print(if ((pair.first + pair.second).amount == result.amount &&
               (pair.first + pair.second).currency == result.currency) "." else "!")
 }
-println("") */
+println("")
