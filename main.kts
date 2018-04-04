@@ -2,6 +2,7 @@
 
 println("UW Homework: Simple Kotlin")
 
+// write a "whenFn" that takes an arg of type "Any" and returns a String
 fun whenFn(argument: Any): String {
     if (argument is String) {
         if (argument === "Hello") {
@@ -20,24 +21,29 @@ fun whenFn(argument: Any): String {
     return "I don't understand";
 }
 
+// write an "add" function that takes two Ints, returns an Int, and adds the values
 fun add(left: Int, right: Int): Int {
     return left + right;
 }
 
+// write a "sub" function that takes two Ints, returns an Int, and subtracts the values
 fun sub(left: Int, right: Int): Int {
     return left - right;
 }
 
+// write a "mathOp" function that takes two Ints and a function (that takes two Ints and returns an Int), returns an Int, and applies the passed-in-function to the arguments
 fun mathOp (left: Int, right: Int, op: (Int, Int) -> Int): Int {
     return op(left, right);
 }
 
+// write a class "Person" with first name, last name and age
 class Person(val firstName: String, val lastName: String, var age: Int) {
 
     var debugString: String = "defaultValue"
     get() = "[Person firstName:$firstName lastName:$lastName age:$age]"
 }
 
+// write a class "Money"
 class Money(var amount: Int, var currency: String) {
 
     fun convert(to: String): Money {
