@@ -28,6 +28,10 @@ fun sub(left: Int, right: Int): Int {
     return left - right;
 }
 
+fun mathOp (left: Int, right: Int, op: (Int, Int) -> Int): Int {
+    return op(left, right);
+}
+
 // write a "whenFn" that takes an arg of type "Any" and returns a String
 
 // write an "add" function that takes two Ints, returns an Int, and adds the values
@@ -80,7 +84,7 @@ for ( (k,v) in sub_tests) {
 }
 println("")
 
-/* print("Op tests: ")
+print("Op tests: ")
 print(if (mathOp(2, 2, { l,r -> l+r} ) == 4) "." else "!")
 print(if (mathOp(2, 2, ::add ) == 4) "." else "!")
 print(if (mathOp(2, 2, ::sub ) == 0) "." else "!")
@@ -88,7 +92,7 @@ print(if (mathOp(2, 2, { l,r -> l*r} ) == 4) "." else "!")
 println("")
 
 
-print("Person tests: ")
+/* print("Person tests: ")
 val p1 = Person("Ted", "Neward", 47)
 print(if (p1.firstName == "Ted") "." else "!")
 p1.age = 48
