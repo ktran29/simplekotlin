@@ -32,6 +32,12 @@ fun mathOp (left: Int, right: Int, op: (Int, Int) -> Int): Int {
     return op(left, right);
 }
 
+class Person(val firstName: String, val lastName: String, var age: Int) {
+
+    var debugString: String = "defaultValue"
+    get() = "[Person firstName:$firstName lastName:$lastName age:$age]"
+}
+
 // write a "whenFn" that takes an arg of type "Any" and returns a String
 
 // write an "add" function that takes two Ints, returns an Int, and adds the values
@@ -92,14 +98,14 @@ print(if (mathOp(2, 2, { l,r -> l*r} ) == 4) "." else "!")
 println("")
 
 
-/* print("Person tests: ")
+print("Person tests: ")
 val p1 = Person("Ted", "Neward", 47)
 print(if (p1.firstName == "Ted") "." else "!")
 p1.age = 48
 print(if (p1.debugString == "[Person firstName:Ted lastName:Neward age:48]") "." else "!")
 println("")
 
-print("Money tests: ")
+/* print("Money tests: ")
 val tenUSD = Money(10, "USD")
 val twelveUSD = Money(12, "USD")
 val fiveGBP = Money(5, "GBP")
