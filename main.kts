@@ -2,6 +2,32 @@
 
 println("UW Homework: Simple Kotlin")
 
+fun whenFn(argument: Any): String {
+    if (argument is String) {
+        if (argument === "Hello") {
+            return "world";
+        }
+        return "Say what?"
+    } else if (argument is Int){
+        if (argument == 0) {
+            return "zero";
+        } else if (argument == 1) {
+            return "one";
+        } else if (argument < 10 && argument > 2) {
+            return "low number";
+        }
+    }
+    return "I don't understand";
+}
+
+fun add(left: Int, right: Int): Int {
+    return left + right;
+}
+
+fun sub(left: Int, right: Int): Int {
+    return left - right;
+}
+
 // write a "whenFn" that takes an arg of type "Any" and returns a String
 
 // write an "add" function that takes two Ints, returns an Int, and adds the values
@@ -54,7 +80,7 @@ for ( (k,v) in sub_tests) {
 }
 println("")
 
-print("Op tests: ")
+/* print("Op tests: ")
 print(if (mathOp(2, 2, { l,r -> l+r} ) == 4) "." else "!")
 print(if (mathOp(2, 2, ::add ) == 4) "." else "!")
 print(if (mathOp(2, 2, ::sub ) == 0) "." else "!")
@@ -95,4 +121,4 @@ for ( (pair, result) in moneyadd_tests) {
     print(if ((pair.first + pair.second).amount == result.amount &&
               (pair.first + pair.second).currency == result.currency) "." else "!")
 }
-println("")
+println("") */
